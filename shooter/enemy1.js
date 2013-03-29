@@ -1,4 +1,3 @@
-
 var Enemy1 = function (game){
 	this.game = game
 	this.x = Math.floor(Math.random() * 700);
@@ -9,17 +8,24 @@ var Enemy1 = function (game){
 Enemy1.prototype.update = function(){
 	this.y = this.y + 2;
 
-	enemy1Array.push(new Enemy1());	
- 
+	if((Math.random() * 10) > 9.96){
+		enemy1Array.push(new Enemy1());
+	}
+	if (enemy1Array.length > 30){
+		enemy1Array.pop();
+	}
 };
 
 Enemy1.prototype.draw = function(){
-	for(i=0; i<enemy1Array.length; i++){
-		this.game.drawRectangle('#F00000', this.x, this.y, 15, 15)
-	}
-	//this.game.drawRectangle('#F00000', this.x, this.y, 15, 15)	
-	
+
+
+	this.game.ctx.fillStyle = 'red';
+	this.game.ctx.fillRect(this.x, this.y, 20, 20);
+	//this.game.drawRectangle('#FFFF00', this.x, this.y, 15, 15)
+
 };
+
+
 
 
 
